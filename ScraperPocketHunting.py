@@ -32,7 +32,24 @@ junk_phrases = [
     "Prev Chapter", "Next Chapter", "Add to Library", "Comments",
     "Freewebnovel.Com", "Privacy Policy", "Read Books Online",
     "Your Library", "Latest Novels", "Genres", "Login", "Signup",
-    "Read more chapters at FreeWebNovel.Com"
+    "Read more chapters at FreeWebNovel.Com", "ReadNovelFull.Com Read light novel, web novel, korean novel and chinese novel online for free. You can find hundreds of english translated light novel, web novel, korean novel and chinese novel which are daily updated! Read novels online, read light novel online, read online free, free light novel online. Contact",
+    "Show menu Read Novel Full Novel List Latest Release Hot Novel" "Completed Novel" "Most Popular" "Genre",
+"Action Adult Adventure",
+"Comedy Drama Eastern Ecchi Fanfiction Fantasy",
+"Game Gender Bender Harem Hentai Historical Horror",
+"Josei Martial Arts Mature Mecha Modern Life",
+"Mystery Psychological Reincarnation Romance School life Sci-fi",
+"Seinen Shoujo Shounen Slice of Life Smut Sports",
+"Supernatural System Tragedy Transmigration",
+"Options Background Light gray Light blue Light yellow Sepia Dark blue",
+"Dark yellow Wood grain White Dark",
+"Palatino Linotype Bookerly Minion Segoe UI Roboto",
+"Roboto Condensed Patrick Hand Noticia Text Times New Roman",
+"Verdana Tahoma Arial",
+"Font size 16 18 20 22 24 26 28 30 32",
+"34 36 38 40",
+"Line height 100% 120% 140% 160% 180% 200% Full frame Yes No",
+"No line break Yes No"
 ]
 
 # ============================
@@ -50,7 +67,7 @@ def clean_text(raw_text):
 def fetch_chapter(chapter_number):
     """Tries all URL patterns and selector patterns until it finds valid content."""
     for base in base_urls:
-        url = base.format(chapter_number)
+        url = base.format(i=chapter_number)
         try:
             response = requests.get(url, timeout=10)
         except requests.RequestException:

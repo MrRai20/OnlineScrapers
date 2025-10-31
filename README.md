@@ -1,34 +1,104 @@
 # OnlineScrapers
 
-[![CI](https://github.com/MrRai20/OnlineScrapers/actions/workflows/ci.yml/badge.svg)](https://github.com/MrRai20/OnlineScrapers/actions/workflows/ci.yml)
 [![Tests](https://github.com/MrRai20/OnlineScrapers/actions/workflows/tests.yml/badge.svg)](https://github.com/MrRai20/OnlineScrapers/actions/workflows/tests.yml)
-[![Release](https://img.shields.io/github/v/release/MrRai20/OnlineScrapers?display_name=tag&sort=semver)](https://github.com/MrRai20/OnlineScrapers/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python 3.10–3.11](https://img.shields.io/badge/python-3.10–3.11-blue.svg)
 
-**Lightweight scrapers with a unified CLI wrapper.**  
-Keep your existing scripts **unchanged**; run them via `merge_cli.py`, and (optionally) bundle Markdown outputs into **EPUB**.
-
----
-
-## Features
-- Unified CLI wrapper (`merge_cli.py`) for both **wiki** and **novel** scrapers (no code changes inside your scripts).
-- Optional **bundle** command to merge multiple Markdown files and produce a minimal **EPUB**.
-- Tests ready (no network): dummy scripts + end-to-end wrapper checks.
-- CI-ready (Ruff + Pytest matrix) with green, recruiter-friendly badges.
+Lightweight scrapers with a **unified CLI wrapper**. Keep your existing scripts **unchanged**; run them via `merge_cli.py`, and (optionally) bundle Markdown into **EPUB**.
 
 ---
 
 ## Quick Start
 
-```bash
-# (optional) create & activate a virtual environment
-python -m venv .venv
-# macOS/Linux
-source .venv/bin/activate
-# Windows PowerShell
-# . .\.venv\Scripts\Activate.ps1
+    # (optional) create & activate a virtual environment
+    python -m venv .venv
+    # macOS/Linux
+    source .venv/bin/activate
+    # Windows PowerShell
+    # .\.venv\Scripts\Activate.ps1
 
-# install runtime deps
-pip install -U pip
-pip install -r requirements.txt
+    # install dependencies
+    pip install -U pip
+    pip install -r requirements.txt
+
+---
+
+## Usage (Unified CLI)
+
+> The wrapper **shells out** to your existing scripts and forwards flags if they support them.  
+> If a script is interactive, the wrapper just launches it normally.
+
+**Run existing Wiki scraper**
+
+    python merge_cli.py wiki ^
+      --script FandomScraper.py ^
+      --base-url https://starwars.fandom.com ^
+      --page "The Force" ^
+      --out out/The_Force.md
+
+*(On macOS/Linux replace `^` line-breaks with `\`.)*
+
+**Run existing Novel scraper**
+
+    python merge_cli.py novel ^
+      --script ScraperPocketHunting.py ^
+      --start-url https://example.com/novel/chapter-1 ^
+      --out out/Novel.md
+
+**Bundle multiple Markdown files (MD + EPUB)**
+
+    python merge_cli.py bundle ^
+      --inputs "out/*.md" ^
+      --md out/Collected.md ^
+      --epub out/Collected.epub ^
+      --title "Collected Works" ^
+      --author "OnlineScrapers"
+
+---
+
+## Tests
+
+Deterministic tests (no internet). Runs the wrapper and checks `bundle` output.
+
+    pip install pytest
+    pytest -q
+
+
+
+---
+
+## Security & Ethics
+
+- **Respect robots.txt & Terms of Service.** Only scrape where permitted; content may be copyrighted.  
+- **Be polite:** use a descriptive User-Agent and small delays; avoid aggressive parallelism.  
+- **No secrets in repo:** never commit API keys/tokens; prefer environment variables.  
+- **Local I/O:** outputs are Markdown/EPUB files; no databases/services required by default.
+
+---
+
+## Troubleshooting
+
+- Run commands from the **repo root**: `python merge_cli.py ...`  
+- **Windows:** if `python` isn’t found, use `py -3`.  
+- Ensure `out/` is writable; the wrapper creates it when needed.  
+- Interactive scripts remain interactive; the wrapper doesn’t change that.
+
+---
+
+## Project Structure (example)
+
+    FandomScraper.py
+    ScraperPocketHunting.py
+    merge_cli.py
+    requirements.txt
+    tests/
+      test_quick.py
+    .github/workflows/
+      tests.yml
+    out/                 # generated
+
+---
+
+## License
+
+MIT — see `LICENSE`.

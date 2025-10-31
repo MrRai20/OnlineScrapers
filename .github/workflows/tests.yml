@@ -25,4 +25,6 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -q tests/test_quick.py
+        run: |
+          pytest -q tests/test_quick.py
+          pytest -q tests/test_merge_cli.py

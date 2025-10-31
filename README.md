@@ -5,7 +5,7 @@
 ![Python 3.10–3.11](https://img.shields.io/badge/python-3.10–3.11-blue.svg)
 
 Lightweight scrapers with a **unified CLI wrapper**. Keep your existing scripts **unchanged**; run them via `merge_cli.py`, and (optionally) bundle Markdown into **EPUB**.
-
+Work in Progress
 ---
 
 ## Quick Start

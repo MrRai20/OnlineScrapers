@@ -93,6 +93,7 @@ Deterministic tests (no internet). Runs the wrapper and checks `bundle` output.
     requirements.txt
     tests/
       test_quick.py
+      test_merge_cli.py
     .github/workflows/
       tests.yml
     out/                 # generated

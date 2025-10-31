@@ -8,13 +8,13 @@ import os
 # ============================
 
 # Create a folder for saved chapters
-output_folder = "PocketHunting_Wiki"
+output_folder = "SoulLandChapters"
 os.makedirs(output_folder, exist_ok=True)
 
 # Base URL options (FreeWebNovel uses inconsistent structures)
 base_urls = [
     "",
-    "https://pocket-hunting-dimension.fandom.com/wiki/Lu_Ze/Techniques",
+    "https://readnovelfull.com/douluo-dalu/chapter-{i}.html",
     ""
 ]
 
@@ -96,3 +96,4 @@ for i in range(start_chapter, end_chapter + 1):
     time.sleep(2)  # delay to avoid pinging server too fast
 
 print("\n🎉 DONE! All chapters saved in:", os.path.abspath(output_folder))
+

@@ -1,0 +1,5 @@
+# requirements.txt
+# Runtime deps commonly used by scrapers; safe to install on CI.
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+lxml>=4.9.3

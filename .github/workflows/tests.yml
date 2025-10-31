@@ -25,4 +25,4 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -q/test_quick.py
+        run: pytest -q tests/test_quick.py
